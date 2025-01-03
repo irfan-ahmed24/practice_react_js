@@ -1,19 +1,28 @@
 import React from 'react'
 import { useState } from 'react'
 
-export default function New() {
+import './new.css'
+
+export default function New(props) {
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
+    const data = { title, desc }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title, desc)
+        props.onData(data);
+        setTitle('');
+        setDesc('');
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type='text' id='title' name='title' onChange={(e) => setTitle(e.target.value)} />
-                <textarea id='desc' name='desc' onChange={(e) => setDesc(e.target.value)}></textarea>
-                <button type='submit'>Send</button>
+        <div className='newTodo'>
+            <form onSubmit={handleSubmit} className='form'>
+                <div className='title'>
+                    <input type='text' id='title' name='title' onChange={(e) => setTitle(e.target.value)} placeholder='Enter Title...' value={title} />
+                </div>
+                <div className='desc'>
+                    <textarea id='desc' name='desc' onChange={(e) => setDesc(e.target.value)} placeholder='Enter desc....' value={desc}></textarea>
+                </div>
+                <button type='submit' className='btn'>Send</button>
             </form>
         </div>
     )

@@ -1,0 +1,14 @@
+.todos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin: 2rem;
+}
+
+.todo {
+    background-color: rgb(197, 168, 124);
+    height: 6rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
